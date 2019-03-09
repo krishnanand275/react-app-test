@@ -10,6 +10,7 @@ node {
       sh 'printenv'
     }
     stage('Build Docker test'){
+      echo $whoami
       sh 'docker build -t react-test -f Dockerfile.test --no-cache . '
     }
     stage('Docker test'){
