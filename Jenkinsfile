@@ -10,13 +10,13 @@ node {
       sh 'printenv'
     }
     stage('Build Docker test'){
-      sh 'sudo docker build -t react-test -f Dockerfile.test --no-cache . '
+      sh 'docker build -t react-test -f Dockerfile.test --no-cache . '
     }
     stage('Docker test'){
-      sh 'sudo docker run --rm react-test'
+      sh 'docker run --rm react-test'
     }
     stage('Clean Docker test'){
-      sh 'sudo docker rmi react-test'
+      sh 'docker rmi react-test'
     }
     stage('Deploy'){
       if(env.BRANCH_NAME == 'master'){
